@@ -8,10 +8,7 @@ const prompt = require('prompt-sync')();
 // - do not use var
 // - let is used when the variable will be reassigned a different value
 // - const is used wehn the variable's value will remain the same for the duration of its scope
-const secretWord = "apple pie";
-
-
-
+const secretWord = "apple";
 
 // JavaScript has all the operators common in other programming languages
 // +, -, /, * -> arth. operators
@@ -23,18 +20,46 @@ const secretWord = "apple pie";
 // Truthy values -> are not falsly, [], {}, " ", "0"
 // Falsly values -> false, "", '', 0, 0.0, null, undefined, NaN
 
+const guesses = [];
 
-let alphabet = prompt("Enter an alphabet: ");
-if (alphabet) {
-    console.log("alphabet =", alphabet);
-    // determine if the alphabet is in the sentence
-    const matched = secretWord.includes(alphabet);
-    if (matched) {
-        console.log("Alphabet", alphabet, "exists in the word");
-    } else {
-        console.log("Alphabet does not exist in the word")
+while (true) {
+    let alphabet = "";
+    while (alphabet === "" || alphabet.toLowerCase().charCodeAt(0) < 97 || alphabet.toLowerCase().charCodeAt(0) > 122) {
+        alphabet = prompt("Enter an alphabet: ");
+        if (alphabet === "" || alphabet.toLowerCase().charCodeAt(0) < 97 || alphabet.toLowerCase().charCodeAt(0) > 122) {
+            console.log("You did not enter a valid character");
+            break;
+        }
     }
 
-} else {
-    console.log("You did not enter anything")
+    if (alphabet == "!q") {
+        break;
+    }
+    if (secretWord.includes(alphabet)) {
+        console.log("Alphabet", alphabet, "is in the secret word");
+        guesses.push(alphabet);
+    } else {
+        console.log("Alphabet", alphabet, "is not in the secret word");
+    }
+
+    // print out the secret word, using _ for alphabets not guessed yet and for alphabet thats has been guessed,
+    // we display it
+    const display = [];
+    for (let alphabet of secretWord) {
+        if (alphabet == ' ') {
+            display.push(' ');
+        }
+        else if (guesses.includes(alphabet)) {
+            display.push(alphabet);
+        } else {
+            display.push('_');
+        }
+
+    }
+    console.log(...display)
+
+    if (display.join("") == secretWord) {
+        console.log("You have guessed the word correctly!");
+        break;
+    }
 }
