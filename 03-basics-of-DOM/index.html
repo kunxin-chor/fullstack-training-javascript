@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="header.js" defer></script>
+</head>
+<body>
+    <h1>DOM Example</h1>
+
+    <div id="important">
+        IMPORTANT MESSAGE HERE!
+    </div>
+
+    <div id="urgent">
+        urgent message
+    </div>
+
+    <!-- Inline Script: not recommended -->
+    <script>
+        console.log("Hello World");
+        // document represents the entire HTML file
+        // document is always available if the JavaScript is executed in the browser 
+        // sometimes, people will say window.document (that is if they need to reuse document variable)
+        // const importantElement = document.getElementById('important');
+        // // importantElement will be an object that represents the HTML element
+        // importantElement.innerHTML = "Goodbye World";
+        // console.dir(importantElement);
+    </script>
+    <!-- External JavaScript Files: Recommended -->
+     <script src="script.js"></script>
+</body>
+</html>
