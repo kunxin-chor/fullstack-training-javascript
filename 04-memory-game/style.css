@@ -1,0 +1,20 @@
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    font-size: 32px;
+}
+
+.box span {
+    visibility:hidden;
+}
+
+#gameboard {
+    display: flex;
+    flex-direction: row;
+    width: 680px;
+    flex-wrap: wrap;
+}
