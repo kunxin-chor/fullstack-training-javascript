@@ -56,7 +56,7 @@ function checkAnswer(guesses, secretWord) {
 // } 
 // main(); // run the main function when we execute index.js
 
-// Immediate Executed Function
+// Immediate Invoked Function Expression
 (function() {
   const secretWord = pickSecretWord();
   const guesses = [];
